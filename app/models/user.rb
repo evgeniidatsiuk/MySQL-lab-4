@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # has_one :profile
-
   # тригер який перевіряє на валідність даних перед збереженням у базу даних
   before_save :check
   # тригер який після успішного створення користувача стоврює профіль для цього користувача
@@ -31,6 +29,7 @@ class User < ApplicationRecord
     queries << "DELETE FROM parking_spots WHERE user_id = #{self.id}"
     queries << "DELETE FROM profiles WHERE user_id = #{self.id} LIMIT 1"
     queries << "DELETE FROM payments WHERE user_id = #{self.id}"
+    queries << "DELETE FROM vehicles WHERE user_id = #{self.id}"
     queries.each { |sql|  ActiveRecord::Base.connection.execute(sql) }
   end
 end
