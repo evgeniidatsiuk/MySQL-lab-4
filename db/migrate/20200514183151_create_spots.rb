@@ -6,6 +6,7 @@ class CreateSpots < ActiveRecord::Migration[5.2]
       t.integer :count, default: 1
       t.string :description
       t.boolean :is_open, default: true
+      t.integer :price_per_hour, default: 1
 
       t.timestamps
     end

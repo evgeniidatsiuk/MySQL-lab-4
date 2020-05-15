@@ -2,9 +2,12 @@
 sql = "INSERT INTO `users` (`email`, `password`, `created_at`, `updated_at`) VALUES ('x@x.x', 'password', '#{Time.zone.now.to_datetime}', '#{Time.zone.now.to_datetime}')"
 ActiveRecord::Base.connection.execute(sql)
 
+sql = "INSERT INTO `vehicles` (`name`, `number`, `user_id`,  `created_at`, `updated_at`) VALUES ('cool', '228', 1, '#{Time.zone.now.to_datetime}', '#{Time.zone.now.to_datetime}')"
+ActiveRecord::Base.connection.execute(sql)
+
 # створити парковки
 15.times do |name|
-  sql = "INSERT INTO `spots` (`name`, `address`, `count`, `description`, `is_open`, `created_at`, `updated_at`) VALUES ('name - #{name+1}', 'Університетська #{name+1}', #{rand(10)}, 'Паркуйся, не бійся', #{name % 2 == 0}, '2020-05-14 19:35:59', '2020-05-14 19:35:59')"
+  sql = "INSERT INTO `spots` (`name`, `address`, `count`, `description`, `is_open`, `price_per_hour`, `created_at`, `updated_at`) VALUES ('name - #{name+1}', 'Університетська #{name+1}', #{rand(10)}, 'Паркуйся, не бійся', #{name % 2 == 0}, #{rand(100)}, '2020-05-14 19:35:59', '2020-05-14 19:35:59')"
   ActiveRecord::Base.connection.execute(sql)
 end
 

@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_185445) do
+ActiveRecord::Schema.define(version: 2020_05_15_143351) do
 
   create_table "parking_spots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "spot_id"
+    t.integer "vehicle_id"
     t.datetime "start"
     t.datetime "end"
+    t.integer "amount"
+    t.boolean "paid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_185445) do
     t.integer "count", default: 1
     t.string "description"
     t.boolean "is_open", default: true
+    t.integer "price_per_hour", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +57,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_185445) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

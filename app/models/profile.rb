@@ -1,9 +1,11 @@
 class Profile < ApplicationRecord
   # belongs_to :user
 
+  # тригер який перевіряє при оновленні на валідність даних перед збереженням у базу даних
+  # чому при оновленні? Бо при створенні користувач отримує пустий профіль - там ми його не валідуємо
   before_save :check, on: :update
 
-
+  # метод який перевіряє на валідність даних якщо щось не так то виведе помилку
   def check
     if self.first_name == nil
       raise 'First name cannot be empty'
