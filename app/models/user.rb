@@ -2,9 +2,8 @@ class User < ApplicationRecord
   # has_one :profile
 
   before_save :check
+  after_commit :create_profile, on: :create
   after_destroy :delete_all
-
-  after_commit :create_profile
 
   def check
     if self.email == nil

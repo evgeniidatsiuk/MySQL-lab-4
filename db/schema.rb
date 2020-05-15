@@ -42,13 +42,10 @@ ActiveRecord::Schema.define(version: 2020_05_14_185445) do
 
   create_table "spots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.float "lat"
-    t.float "lng"
     t.string "address"
     t.integer "count", default: 1
     t.string "description"
-    t.datetime "open"
-    t.datetime "close"
+    t.boolean "is_open", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
